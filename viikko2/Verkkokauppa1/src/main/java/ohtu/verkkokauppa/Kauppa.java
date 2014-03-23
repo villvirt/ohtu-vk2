@@ -7,11 +7,13 @@ public class Kauppa {
     private Ostoskori ostoskori;
     private Viitegeneraattori viitegeneraattori;
     private String kaupanTili;
+    private Kirjanpito kirjanpito;
 
-    public Kauppa() {
-        varasto = Varasto.getInstance();
-        pankki = Pankki.getInstance();
-        viitegeneraattori = Viitegeneraattori.getInstance();
+    public Kauppa (Varasto v, Pankki p, Viitegeneraattori g, Kirjanpito k) {
+        varasto = v;
+        pankki = p;
+        viitegeneraattori = g;
+        kirjanpito = k;
         kaupanTili = "33333-44455";
     }
 
@@ -38,5 +40,10 @@ public class Kauppa {
         
         return pankki.tilisiirto(nimi, viite, tiliNumero, kaupanTili, summa);
     }
-
+    
+    public void tapahtumat(){
+            for (String tapahtuma : kirjanpito.getTapahtumat()) {
+            System.out.println(tapahtuma);
+        }
+    }
 }
