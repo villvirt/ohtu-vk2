@@ -15,11 +15,11 @@ public class Kauppa {
    
     
     @Autowired
-    public Kauppa (Varasto v, Pankki p, Viitegeneraattori g, Kirjanpito k) {
+    public Kauppa (Varasto v, Pankki p, Viitegeneraattori g) {
+        kirjanpito = new Kirjanpito();
         varasto = v;
         pankki = p;
         viitegeneraattori = g;
-        kirjanpito = k;
         kaupanTili = "33333-44455";
     }
 
@@ -29,6 +29,7 @@ public class Kauppa {
 
     public void poistaKorista(int id) {
         Tuote t = varasto.haeTuote(id); 
+        ostoskori.poista(t);
         varasto.palautaVarastoon(t);
     }
 
@@ -47,9 +48,9 @@ public class Kauppa {
         return pankki.tilisiirto(nimi, viite, tiliNumero, kaupanTili, summa);
     }
     
-    public void tapahtumat(){
+   /* public void tapahtumat(){
             for (String tapahtuma : kirjanpito.getTapahtumat()) {
             System.out.println(tapahtuma);
         }
-    }
+    }*/
 }

@@ -31,7 +31,7 @@ public class Main {
 
         kauppa.tilimaksu("Arto Vihavainen", "3425-1652");
 
-        // kirjanpito
-        kauppa.tapahtumat();
+        // tämä ilm. poistettu
+       // kauppa.tapahtumat();
     }
 }
