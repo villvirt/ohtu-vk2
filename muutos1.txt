@@ -3,5 +3,3 @@ muutos3
 '
 
 muutoksia4
-
-vaaramuutos
