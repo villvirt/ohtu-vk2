@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class IntJoukko {
 
-    public final static int KAPASITEETTI = 5, // aloitustalukon koko
+   /* public final static int KAPASITEETTI = 5, // aloitustalukon koko
             OLETUSKASVATUS = 5;  // luotava uusi taulukko on 
     // näin paljon isompi kuin vanha
     private int kasvatuskoko;     // Uusi taulukko on tämän verran vanhaa suurempi.
     private int[] ljono;      // Joukon luvut säilytetään taulukon alkupäässä. 
-    private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla.
+    private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla.*/
     private ArrayList<Integer> jono;
 
     public IntJoukko() {
@@ -18,11 +18,12 @@ public class IntJoukko {
          * { ljono[i] = 0; } alkioidenLkm = 0; this.kasvatuskoko =
          * OLETUSKASVATUS;
          */
-        alusta(OLETUSKASVATUS, KAPASITEETTI);
+        //alusta();
+        jono = new ArrayList();
 
     }
 
-    public IntJoukko(int kapasiteetti) {
+    /*public IntJoukko(int kapasiteetti) {
         if (kapasiteetti < 0) {
             return;
         }
@@ -31,7 +32,7 @@ public class IntJoukko {
          * { ljono[i] = 0; } alkioidenLkm = 0; this.kasvatuskoko =
          * OLETUSKASVATUS;
          */
-        alusta(OLETUSKASVATUS, kapasiteetti);
+     /*   alusta();
     }
 
     public IntJoukko(int kapasiteetti, int kasvatuskoko) {
@@ -45,8 +46,8 @@ public class IntJoukko {
          * ljono = new int[kapasiteetti]; for (int i = 0; i < ljono.length; i++)
          * { ljono[i] = 0; } alkioidenLkm = 0; this.kasvatuskoko = kasvatuskoko;
          */
-        alusta(kasvatuskoko, kapasiteetti);
-    }
+/*        alusta();
+    }*/
 
     public boolean lisaa(int luku) {
         if (!kuuluu(luku)) {
@@ -186,7 +187,7 @@ public class IntJoukko {
         return x;
     }
 
-    private void alusta(int kasvatuskoko, int kapasiteetti) {
+   /* private void alusta() {
         jono = new ArrayList();
         ljono = new int[kapasiteetti];
         for (int i = 0; i < ljono.length; i++) {
@@ -194,6 +195,5 @@ public class IntJoukko {
         }
         alkioidenLkm = 0;
         this.kasvatuskoko = kasvatuskoko;
-
-    }
+    }*/
 }
