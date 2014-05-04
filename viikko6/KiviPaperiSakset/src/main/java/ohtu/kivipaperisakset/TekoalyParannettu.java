@@ -36,7 +36,7 @@ public class TekoalyParannettu implements TekoAlyInterface{
     
     int kivi = 0;
     int paperi = 0;
-    int s = 0;
+    int sakset = 0;
     
     
     for(int i = 0; i < vapaaMuistiIndeksi - 1; i++) {
@@ -50,7 +50,7 @@ public class TekoalyParannettu implements TekoAlyInterface{
           paperi++;
         }
         else {
-          s++;
+          sakset++;
         }        
       }
     }
@@ -60,10 +60,10 @@ public class TekoalyParannettu implements TekoAlyInterface{
     // - jos kiviä eniten, annetaan aina paperi
     // - jos papereita eniten, annetaan aina sakset
     // muulloin annetaan aina kivi
-    if(kivi > paperi && kivi > s) {
+    if(kivi > paperi && kivi > sakset) {
       return "p";
     }
-    else if (paperi > kivi && paperi > s) {
+    else if (paperi > kivi && paperi > sakset) {
       return "s";
     }
     else {
