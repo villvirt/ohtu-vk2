@@ -1,6 +1,7 @@
 package ohtu.intjoukkosovellus;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -45,17 +46,19 @@ public class IntJoukkoTest {
     
     @Test
     public void palautetaanOikeaTaulukko() {
-        int[] odotettu = {3, 55, 99};
+        ArrayList<Integer> odotettu = new ArrayList();
+        odotettu.add(3);
+        odotettu.add(55);
+        odotettu.add(99);
+        
         
         joukko.lisaa(55);
         joukko.poista(10);
         joukko.lisaa(99);
 
-        int[] vastaus = joukko.toIntArray();
-        Arrays.sort(vastaus);
-        assertArrayEquals(odotettu, vastaus);
+        ArrayList<Integer> vastaus = joukko.toIntArray();
+        assertEquals(odotettu, vastaus);
     }
-    
     
     @Test
     public void toimiiKasvatuksenJalkeen(){
