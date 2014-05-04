@@ -3,37 +3,62 @@
  * and open the template in the editor.
  */
 package ohtu.kivipaperisakset;
+
 import java.util.Scanner;
+
 /**
  *
  * @author Blackstorm
  */
-public abstract class KSPTemplate implements KSP {
+public class KSPTemplate {
 
-    public KSPTemplate() {
+    private static Scanner scanner;
+    private TekoAlyInterface tekoaly;
+
+    public KSPTemplate(TekoAlyInterface tekoaly) {
+        this.scanner = new Scanner(System.in);
+        this.tekoaly = tekoaly;
     }
 
-    public void pelaa(String pelaaja1,String pelaaja2) {
+    public KSPTemplate() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void pelaa(String player1, String player2) {
         Tuomari tuomari = new Tuomari();
-        TekoalyParannettu tekoaly = new TekoalyParannettu(20);
-        System.out.print("Ensimm\u00e4isen pelaajan siirto: ");
-        String ekanSiirto = KPSParempiTekoaly.scanner.nextLine();
-        String tokanSiirto;
-        tokanSiirto = tekoaly.annaSiirto();
-        System.out.println("Tietokone valitsi: " + tokanSiirto);
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
+        System.out.print(player1 + ":n vuoro\n");
+        String player1Siirto = this.scanner.nextLine();
+        String player2Siirto = tokanSiirto(player2, player1Siirto);
+        while (onkoOkSiirto(player1Siirto) && onkoOkSiirto(player2Siirto)) {
+            tuomari.kirjaaSiirto(player1Siirto, player2Siirto);
             System.out.println(tuomari);
             System.out.println();
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = KPSParempiTekoaly.scanner.nextLine();
-            tokanSiirto = tekoaly.annaSiirto();
-            System.out.println("Tietokone valitsi: " + tokanSiirto);
-            tekoaly.asetaSiirto(ekanSiirto);
+            System.out.print(player1 + "n vuoro\n");
+            player1Siirto = KSPTemplate.scanner.nextLine();
+            player2Siirto = tokanSiirto(player2, player1Siirto);
+
         }
         System.out.println();
         System.out.println("Kiitos!");
         System.out.println(tuomari);
     }
-    
+
+    private static boolean onkoOkSiirto(String siirto) {
+        return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
+    }
+
+    private String tokanSiirto(String player2, String player1Siirto) {
+        String siirto;
+        if (tekoaly == null) {
+            System.out.println(player2 + ":n vuoro\n");
+            siirto = this.scanner.nextLine();
+            return siirto;
+        } else {
+            siirto = tekoaly.annaSiirto();
+            System.out.println("Tietokone valitsi:" + siirto);
+            tekoaly.asetaSiirto(player1Siirto);
+            return siirto;
+        }
+
+    }
 }

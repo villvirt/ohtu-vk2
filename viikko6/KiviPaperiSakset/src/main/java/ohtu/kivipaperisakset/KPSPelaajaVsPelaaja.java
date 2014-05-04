@@ -2,13 +2,13 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 
-public class KPSPelaajaVsPelaaja extends KSPTemplate{
-
-    private static final Scanner scanner = new Scanner(System.in);
-
-
-
-    private static boolean onkoOkSiirto(String siirto) {
-        return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
+public class KPSPelaajaVsPelaaja implements Komento{
+ KSPTemplate peli;
+    public KPSPelaajaVsPelaaja(){
+        this.peli = new KSPTemplate();
     }
+    public void pelaa(){
+        peli.pelaa("Pelaaja1", "Pelaaja2");
+    }
+
 }

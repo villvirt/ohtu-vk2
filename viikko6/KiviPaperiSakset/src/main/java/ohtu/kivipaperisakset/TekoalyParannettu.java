@@ -3,7 +3,7 @@ package ohtu.kivipaperisakset;
 
 // "Muistava tekoäly"
 
-public class TekoalyParannettu {
+public class TekoalyParannettu implements TekoAlyInterface{
   private String[] muisti;
   private int vapaaMuistiIndeksi;
 
@@ -34,8 +34,8 @@ public class TekoalyParannettu {
     
     String viimeisinSiirto = muisti[vapaaMuistiIndeksi - 1];
     
-    int k = 0;
-    int p = 0;
+    int kivi = 0;
+    int paperi = 0;
     int s = 0;
     
     
@@ -44,10 +44,10 @@ public class TekoalyParannettu {
         String seuraava = muisti[i+1];
         
         if("k".equals(seuraava)) {
-          k++;
+          kivi++;
         }
         else if("p".equals(seuraava)) {
-          p++;
+          paperi++;
         }
         else {
           s++;
@@ -60,10 +60,10 @@ public class TekoalyParannettu {
     // - jos kiviä eniten, annetaan aina paperi
     // - jos papereita eniten, annetaan aina sakset
     // muulloin annetaan aina kivi
-    if(k > p && k > s) {
+    if(kivi > paperi && kivi > s) {
       return "p";
     }
-    else if (p > k && p > s) {
+    else if (paperi > kivi && paperi > s) {
       return "s";
     }
     else {
